@@ -2,7 +2,7 @@
 
 Rails has native support for xmlrpc.  Most people are familiar with the 'xmlrpc/client' library.  The 'xmlrpc/server' library examples mostly make an assumption that you will run a standalone server.
 
-xmlrpc-endpoint allows you to instead expose normal Rails controller methods via XMLRPC, tied to an xmlrpc endpoint route in your app.
+rails-xmlrpc allows you to instead expose normal Rails controller methods via XMLRPC, tied to an xmlrpc endpoint route in your app.
 
 ==Install
 
@@ -21,7 +21,7 @@ Add row to Gemfile:
   gem "rails-xmlrpc"
 
 Set up a route in your routes.rb file
-  match 'api/xmlrpc' => 'my_controller#xe_index'
+  match 'api/xmlrpc' => 'my#xe_index'
 
 
 == Examples
@@ -52,9 +52,6 @@ To use a custom namespace prefix on all exposed methods (for example, if using s
     ...
     end
   end
-
-Thanks to Nathan Crause for saving me some time on the details of avoiding the standalone server.
-http://nathan.crause.name/entries/programming/xlm-rpc-under-ruby-on-rails
 
 
 == Note on Patches/Pull Requests
