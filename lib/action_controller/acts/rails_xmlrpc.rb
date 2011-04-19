@@ -21,7 +21,8 @@ module ActionController
 
 						def self.add_method name, &block
 							@method_list ||= []
-							@method_list << { :name => name, :block => block}
+							lambda_block = lambda &block
+							@method_list << { :name => name, :block => lambda_block}
 						end
 
 						def self.xe_method_list
