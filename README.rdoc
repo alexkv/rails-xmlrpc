@@ -1,0 +1,67 @@
+= rails-xmlrpc
+
+Rails has native support for xmlrpc.  Most people are familiar with the 'xmlrpc/client' library.  The 'xmlrpc/server' library examples mostly make an assumption that you will run a standalone server.
+
+xmlrpc-endpoint allows you to instead expose normal Rails controller methods via XMLRPC, tied to an xmlrpc endpoint route in your app.
+
+Install
+
+Run in terminal:
+  gem install rails-xmlrpc
+  
+add row inside Gemfile:  
+  gem "rails-xmlrpc"
+  
+Setup your environment
+
+  # set up a route to the controller action "xe_index" in your routes.rb file
+  # (this "xe_index" action will be created for you by the xmlrpc-endpoint, the route must point at 'xe_index' action to work)
+  # In a future release, xmlrpc-endpoint may support auto-generation of this route, and customization
+  
+  match 'api/xmlrpc' => 'my_controller#xe_index'
+
+Add this code to your controller:
+
+  class MyController < ApplicationController
+    exposes_xmlrpc_methods
+    
+    add_method 'Container.method_name' do
+      return 'Hello World'
+    end
+
+  end
+
+Then, pointing an XMLRPC client at the defined route, your normal controller actions will handle the requests.
+
+  require 'xmlrpc/client'
+  server = XMLRPC::Client.new2("http://localhost:3000/api/xmlrpc")
+  server.call("Container.method_name")
+
+To use a custom namespace prefix on all exposed methods (for example, if using someone else's specified protocol like MetaWeblog[http://www.xmlrpc.com/metaWeblogApi]), declare a method_prefix:
+
+  class MyApiController < ApplicationController
+    exposes_xmlrpc_methods :method_prefix => "metaWeblog."
+    
+    # This method will be exposed externally as "metaWeblog.newPost()"
+    def newPost(blogid, username, password, struct, publish)
+    ...
+    end
+  end
+
+Thanks to Nathan Crause for saving me some time on the details of avoiding the standalone server.
+http://nathan.crause.name/entries/programming/xlm-rpc-under-ruby-on-rails
+
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2011 Aleksei Kvitinskii, released under the MIT license.
