@@ -4,22 +4,27 @@ Rails has native support for xmlrpc.  Most people are familiar with the 'xmlrpc/
 
 xmlrpc-endpoint allows you to instead expose normal Rails controller methods via XMLRPC, tied to an xmlrpc endpoint route in your app.
 
-Install
+==Install
 
 Run in terminal:
   gem install rails-xmlrpc
-  
-add row inside Gemfile:  
-  gem "rails-xmlrpc"
-  
-Setup your environment
 
-  # set up a route to the controller action "xe_index" in your routes.rb file
-  # (this "xe_index" action will be created for you by the xmlrpc-endpoint, the route must point at 'xe_index' action to work)
-  # In a future release, xmlrpc-endpoint may support auto-generation of this route, and customization
-  
+=== For Rails 2
+Add row to environment.rb inside  Rails::Initializer block:
+  config.gem "rails-xmlrpc"
+
+Add row to routes.rb
+  map.connect 'api/xmlrpc', :controller => 'my_controller', :action => 'xe_index'
+
+=== For Rails 3
+Add row to Gemfile:
+  gem "rails-xmlrpc"
+
+Set up a route in your routes.rb file
   match 'api/xmlrpc' => 'my_controller#xe_index'
 
+
+== Examples
 Add this code to your controller:
 
   class MyController < ApplicationController
