@@ -64,7 +64,7 @@ module ActionController
 					self.class.instance_methods(false).each do |method|
 						unless ['xe_index', 'xe_method_prefix', 'xe_method_list'].member?(method)
 							puts "Adding XMLRPC method for #{method.to_s}"
-							@xmlrpc_server.add_handler(xe_method_prefix + method) do |*args|
+							@xmlrpc_server.add_handler(xe_method_prefix + method.to_s) do |*args|
 								self.send(method.to_sym, *args)
 							end
 						end
