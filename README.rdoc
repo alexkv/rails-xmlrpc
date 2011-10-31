@@ -1,6 +1,6 @@
 = rails-xmlrpc
 
-Rails has native support for xmlrpc.  Most people are familiar with the 'xmlrpc/client' library.  The 'xmlrpc/server' library examples mostly make an assumption that you will run a standalone server.
+Rails has native support for xmlrpc. Most people are familiar with the 'xmlrpc/client' library.  The 'xmlrpc/server' library examples mostly make an assumption that you will run a standalone server.
 
 rails-xmlrpc allows you to instead expose normal Rails controller methods via XMLRPC, tied to an xmlrpc endpoint route in your app.
 

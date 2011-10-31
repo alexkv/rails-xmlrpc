@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails-xmlrpc}
-  s.version = "0.3.1"
+  s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aleksei Kvitinskii","Will Koffel"]
   s.date = %q{2011-04-10}
-  s.description = %q{Gem allows you to use our RubyOnRails project like XMLRPC server.}
+  s.description = %q{Gem allows you to use our RubyOnRails project like XMLRPC server. Support Rails 3.}
   s.email = %q{aleksei.wm@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Gem allows you to use our RubyOnRails project like XMLRPC server .}
+  s.summary = %q{Gem allows you to use our RubyOnRails project like XMLRPC server. Support Rails 3.}
   s.test_files = [
     "test/helper.rb",
     "test/test_rails-xmlrpc.rb"
