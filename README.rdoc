@@ -23,6 +23,12 @@ Add row to Gemfile:
 Set up a route in your routes.rb file
   match 'api/xmlrpc' => 'my#xe_index'
 
+=== For Rails 4
+Add row to Gemfile:
+  gem "rails-xmlrpc"
+
+Set up a route in your routes.rb file
+  match 'api/xmlrpc', :to => 'my#xe_index', :via => :all
 
 == Examples
 Add this code to your controller:
