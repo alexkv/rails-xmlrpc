@@ -28,7 +28,7 @@ Add row to Gemfile:
   gem "rails-xmlrpc"
 
 Set up a route in your routes.rb file
-  match 'api/xmlrpc', :to => 'my#xe_index', :via => :all
+  post 'api/xmlrpc' => 'my#xe_index'
 
 == Examples
 Add this code to your controller:
