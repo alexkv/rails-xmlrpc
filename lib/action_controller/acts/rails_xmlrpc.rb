@@ -10,7 +10,7 @@ module ActionController
 					configuration = { :method_prefix => nil }
 					configuration.update(options) if options.is_a?(Hash)
 
-					before_filter(:add_method_handlers, :only => [:xe_index])
+					before_action(:add_method_handlers, :only => [:xe_index])
 					class_eval <<-EOV
 						require 'xmlrpc/server'
 						include ActionController::Acts::RailsXmlrpc::InstanceMethods
